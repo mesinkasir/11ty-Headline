@@ -1,41 +1,103 @@
-# Headline
+# 11ty-Headline
 
-> [!IMPORTANT]
-> This repo is synced automatically with the [TryGhost/Themes](https://github.com/TryGhost/Themes) monorepo. If you're looking to contribute or raise an issue, head over to the main repository [TryGhost/Themes](https://github.com/TryGhost/Themes) where our official themes are developed.
+**Headline**, the [Ghost](https://ghost.org) local-news theme, rebuilt as an
+[Eleventy](https://www.11ty.dev/) site. Handlebars → Nunjucks, with static
+[Pagefind](https://pagefind.app/) search, a light/dark mode switch, and
+[Pages CMS](https://pagescms.org/) for browser-based editing.
 
-Headline is a [Ghost](https://github.com/TryGhost/Ghost) theme built from the ground up for local news. While it can be used for any purpose, the theme takes a thoughtful approach to displaying large amounts of content across various areas of coverage. Headline adapts to your content by showcasing your most written about topics or by giving you the control to decide which topics are front and center.
+Original theme © Ghost Foundation (MIT). 
 
-**Demo: https://headline.ghost.io**
+Eleventy conversion by Adam DJ Brett.
 
-# Instructions
+## Stack
 
-1. [Download this theme](https://github.com/TryGhost/Headline/archive/main.zip)
-2. Log into Ghost, and go to the `Design` settings area to upload the zip file
+- **[@11ty/eleventy](https://www.11ty.dev/) `4.0.0-alpha.10`** (the "Build
+  Awesome" v4 line) with the bundled **`@11ty/nunjucks` 4** templating engine.
+- **[@11ty/eleventy-img](https://www.11ty.dev/docs/plugins/image/)** — the
+  `eleventyImageTransformPlugin` optimizes every `<img>` in the built HTML to
+  AVIF/WebP with a responsive `srcset` and explicit dimensions.
+- **[@awesome.me/buildawesome](https://www.npmjs.com/package/@awesome.me/buildawesome)**
+  (installed; pins the Eleventy v4 alpha).
+- **[Pagefind](https://pagefind.app/)** — indexes `_site` after every build and
+  provides the modal **Component UI** (`<pagefind-modal>`).
+- `@apleasantview/eleventy-plugin-baseline` is **optional** — it is not
+  installed by default because its peer range rejects the v4 alpha prerelease.
+  To try it: `npm i -D @apleasantview/eleventy-plugin-baseline --legacy-peer-deps`
+  then build with `USE_BASELINE=1` (the config loads it lazily and safely).
 
-# Development
-
-Styles are compiled using Gulp/PostCSS to polyfill future CSS spec. You'll need [Node](https://nodejs.org/), [pnpm](https://pnpm.io/) and [Gulp](https://gulpjs.com) installed globally. After that, from the theme's root directory:
+## Develop
 
 ```bash
-# Install
-pnpm install
-
-# Run build & watch for changes
-pnpm dev
+npm install
+npm start        # dev server at http://localhost:8080 (rebuilds + reindexes)
+npm run build    # production build to _site/ (runs Pagefind)
 ```
 
-Now you can edit `/assets/css/` files, which will be compiled to `/assets/built/` automatically.
+## Structure
 
-The `zip` Gulp task packages the theme files into `dist/headline.zip`, which you can then upload to your site.
+All site source lives under `src/` (the Eleventy input dir). Build tooling
+(`eleventy.config.js`, `_config/`, `locales/`) stays at the repo root — config
+`.js` files must live outside the input dir or Eleventy treats them as templates.
 
-```bash
-pnpm zip
+```
+src/                 # Eleventy input dir — everything the site is built from
+  posts/*.md           # articles (+ posts.11tydata.js sets layout/permalink/tags)
+  _drafts/*.md         # drafts: preview in `npm start`, excluded from `npm run build`
+  pages/*.md           # standalone pages (about, contact)
+  index.md             # homepage (layout: home.njk)
+  latest.njk           # paginated "Latest" archive → /latest/
+  authors.njk          # one archive page per author → /author/<slug>/
+  tags.njk             # one archive page per topic → /tag/<slug>/
+  feed.njk             # Atom feed → /feed.xml
+  _includes/
+    layouts/           # default, post, page, home
+    partials/          # cards, meta, search, theme-toggle, head, icons/…
+  _data/               # metadata, navigation, theme, authors (all Pages-CMS editable)
+  assets/              # compiled CSS/JS/fonts from the original theme + darkmode
+eleventy.config.js     # input=src; collections, drafts preprocessor, Pagefind hook
+_config/filters.js     # t (i18n), dates (timezone-aware), reading time, slug, …
+locales/en.json        # i18n strings for the `t` filter
+.pages.yml             # Pages CMS schema
 ```
 
-### Theme translations
+### Drafts
+Mark any post a draft with `published: false` in its front matter, or drop it in
+`src/_drafts/` (its directory data defaults `published` to false). Drafts render
+in `npm start` for preview and are stripped from `npm run build`. Promote a draft
+by moving it to `src/posts/` or setting `published: true`.
 
-Please see the @Tryghost/Themes/theme-translations/README.md for how to edit or contribute translations.
+### Timezone
+`_data/metadata.yaml → timezone` (an IANA name like `America/New_York`) sets the
+zone for all rendered dates. Front-matter dates are treated as wall-clock time in
+that zone, so a `date: 2026-06-12` always shows as *12 Jun 2026* — no UTC drift.
 
-# Copyright & License
+## Features
 
-Copyright (c) 2013-2026 Ghost Foundation - Released under the [MIT license](LICENSE).
+### Search (Pagefind Component UI)
+`_includes/partials/head.njk` loads `pagefind-component-ui.{css,js}`; the header
+renders a `<pagefind-modal-trigger>` and the base layout a `<pagefind-modal>`
+(open with the button or <kbd>⌘/Ctrl</kbd>+<kbd>K</kbd>). Only article bodies are
+indexed — post/page `<article>` elements carry `data-pagefind-body`, so listing
+pages are skipped.
+
+### Light / dark mode
+An inline no-flash script in `<head>` sets `data-theme` from `localStorage` or the
+OS preference before first paint. `assets/css/darkmode.css` remaps the theme's
+colour tokens; `assets/js/theme-toggle.js` handles the toggle button and persists
+the choice. Default preference: `_data/theme.yaml → default_color_scheme`.
+
+### Pages CMS
+Edit content in a browser at [app.pagescms.org](https://app.pagescms.org) — install
+the GitHub app on this repo and it reads `.pages.yml`. Posts, pages, authors,
+navigation, site settings and theme options are all editable; commits trigger a
+rebuild.
+
+## Credits
+
+- **[Eleventy (11ty)](https://www.11ty.dev/)** — the static site generator that builds this site.
+- **[Headline](https://github.com/TryGhost/Themes)** — the original theme is the Ghost "Headline" theme by Ghost Foundation (MIT); this repo is an Eleventy conversion of it.
+- **Phosphor Icons** — used for the search and light/dark toggle icons. [Phosphor](https://phosphoricons.com/) is a passion project by [Helena Zhang](https://helenazhang.com/) and [Tobias Fried](https://tobiasfried.com/).
+
+## License
+
+[MIT](LICENSE). Headline is © 2013–2026 Ghost Foundation.

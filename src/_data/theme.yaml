@@ -1,0 +1,12 @@
+# Theme options (Ghost's @custom.* settings, now editable via Pages CMS).
+navigation_layout: Stacked        # "Logo on the left" | "Logo in the middle" | "Stacked"
+header_style: Light               # "Light" | "Accent color" | "Dark"
+title_font: Modern sans-serif     # "Modern sans-serif" | "Elegant serif"
+body_font: Elegant serif          # "Modern sans-serif" | "Elegant serif"
+email_signup_text: "Don't miss out on the latest news. Sign up now to get access to the library of members-only articles."
+footer_text: ""
+# Homepage topic sections. Leave blank to auto-pick the most-written-about tags.
+primary_section_tags: []          # e.g. ["politics", "sports"]
+secondary_section_tags: []
+# Default light/dark preference before the visitor chooses ("light" | "dark").
+default_color_scheme: light

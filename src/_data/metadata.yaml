@@ -1,0 +1,31 @@
+# Site-wide metadata (Ghost's @site.* equivalent)
+title: Headline
+description: A modern local-news publication built with Eleventy.
+url: https://headline.example.com
+language: en
+locale: en_US
+# IANA timezone used to render post dates/times (e.g. America/New_York,
+# America/Chicago, Europe/London). Front-matter dates are treated as wall-clock
+# time in this zone, so a `date: 2026-06-12` always shows as 12 Jun 2026 —
+# no UTC drift/off-by-one.
+timezone: America/New_York
+# Logo image (leave blank to render the title as text)
+logo: ""
+icon: ""
+cover_image: ""
+# Where the red "Subscribe" button in the header points. A newsletter/signup
+# URL, a page like /subscribe/, or an on-page anchor like #subscribe.
+subscribe_url: "#subscribe"
+# Social accounts rendered in the footer. `type` must match an icon partial
+# in _includes/partials/icons/ (x, facebook, instagram, linkedin, bluesky,
+# mastodon, threads, tiktok, youtube, website, email).
+social_accounts:
+  - type: bluesky
+    name: Bluesky
+    href: https://bsky.app/
+  - type: mastodon
+    name: Mastodon
+    href: https://mastodon.social/
+  - type: instagram
+    name: Instagram
+    href: https://instagram.com/

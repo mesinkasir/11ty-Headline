@@ -1,0 +1,13 @@
+# Ghost's {{navigation}} (primary) and {{navigation type="secondary"}}.
+primary:
+  - label: Home
+    url: /
+  - label: Latest
+    url: /latest/
+  - label: About
+    url: /about/
+secondary:
+  - label: About
+    url: /about/
+  - label: RSS
+    url: /feed.xml
