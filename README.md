@@ -151,3 +151,6 @@ feeds:
     label: RSS Feed
 ```
 
+#### Migration WP posts
+
+Complete migration all wp post in to `src/posts`
