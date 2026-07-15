@@ -37,10 +37,13 @@
     "@11ty/eleventy": "4.0.0-alpha.10",
     "@11ty/eleventy-img": "^6.0.4",
     "@awesome.me/buildawesome": "^4.0.0-alpha.10",
+    "axios": "^1.18.1",
+    "cheerio": "^1.2.0",
     "cross-env": "^10.1.0",
     "js-yaml": "^4.1.0",
     "luxon": "^3.7.2",
-    "pagefind": "^1.4.0"
+    "pagefind": "^1.4.0",
+    "turndown": "^7.2.4"
   },
   "allowScripts": {
     "sharp@0.33.5": true

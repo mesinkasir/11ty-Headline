@@ -152,4 +152,231 @@ body,.gh-head,.gh-foot,.gh-card,.gh-article,.gh-content{transition:var(--gh-tran
    button's vertical centre lines up with the "Headline" logo. */
 .gh-subscribe-btn{background-color:#e12026;border-radius:100px;align-self:center;margin:0}
 .gh-subscribe-btn:hover{background-color:#c01319;opacity:1}
+.gh-subscribe-outline-btn{background-color:transparent;border:2px solid #e12026;color:#e12026;align-self:center;margin:0}
+.gh-subscribe-outline-btn:hover{background-color:#e12026;color:#fff;opacity:1}
+/* ============================================
+   HERO CARD - First Post 
+   ============================================ */
+.gh-topic-content .gh-card.hero {
+    grid-column: 1 / -1;
+    margin-bottom: 40px;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.gh-topic-content .gh-card.hero .gh-card-link {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 0;
+    text-decoration: none;
+    color: inherit;
+    background: transparent;
+}
+
+.gh-topic-content .gh-card.hero .gh-card-image {
+    margin: 0;
+    border-radius: 0 !important;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    background: var(--color-lighter-gray, #f3f4f6);
+}
+
+.gh-topic-content .gh-card.hero .gh-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.gh-topic-content .gh-card.hero .gh-card-wrapper {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gh-topic-content .gh-card.hero .gh-card-title {
+    font-family: 'Lora', serif;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    color: var(--color-primary-text, #1a1a1a);
+}
+
+.gh-topic-content .gh-card.hero .gh-card-title:hover {
+    color: #e12026;
+}
+
+.gh-topic-content .gh-card.hero .gh-card-excerpt {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 24px;
+    color: var(--color-secondary-text, #4a4a4a);
+}
+
+.gh-topic-content .gh-card.hero .gh-card-footer {
+    border-top: 1px solid var(--color-light-gray, #e5e7eb);
+    padding-top: 16px;
+    font-size: 0.95rem;
+}
+
+.gh-topic-content .gh-card:not(.hero) {
+
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    .gh-topic-content .gh-card.hero .gh-card-link {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    
+    .gh-topic-content .gh-card.hero .gh-card-title {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+    .gh-topic-content .gh-card.hero .gh-card-link {
+        gap: 16px;
+    }
+    
+    .gh-topic-content .gh-card.hero .gh-card-title {
+        font-size: 1.6rem;
+    }
+    
+    .gh-topic-content .gh-card.hero .gh-card-excerpt {
+        font-size: 1rem;
+    }
+    
+    .gh-topic-content .gh-card.hero .gh-card-footer {
+        font-size: 0.85rem;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+}
+/* ============================================
+   FOOTER FEEDS
+   ============================================ */
+
+.gh-footer-feeds {
+    padding: 60px 0 40px;
+    background: var(--color-lighter-gray, #f7f7f7);
+    border-bottom: 1px solid var(--color-light-gray, #e5e7eb);
+}
+
+.gh-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.gh-feeds-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.gh-feed-card {
+    background: var(--color-white, #ffffff);
+    padding: 32px 24px;
+    border-radius: 12px;
+    border: 1px solid var(--color-light-gray, #e5e7eb);
+    text-align: center;
+    transition: var(--gh-transition);
+}
+
+.gh-feed-card:hover {
+    border-color: var(--color-mid-gray, #9ca3af);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
+
+.gh-feed-title {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 0 0 6px 0;
+    color: var(--color-primary-text, #1a1a1a);
+}
+
+.gh-feed-desc {
+    font-size: 0.9rem;
+    color: var(--color-secondary-text, #4a4a4a);
+    margin: 0 0 16px 0;
+}
+
+.gh-feed-link {
+    display: inline-block;
+    padding: 8px 24px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #e12026;
+    border: 2px solid #e12026;
+    background: transparent;
+    transition: all 0.2s ease;
+}
+
+.gh-feed-link:hover {
+    background: #e12026;
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gh-feeds-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .gh-footer-feeds {
+        padding: 40px 0 30px;
+    }
+}
+.gh-topic-content .gh-card.hero .gh-card-image {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.gh-topic-content .gh-card.hero .gh-card-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+}
+
+/* Kalo masih kecil, coba ini */
+.gh-topic-content .gh-card.hero .gh-card-link {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    padding: 0;
+    text-decoration: none;
+    color: inherit;
+    background: transparent;
+    align-items: stretch; /* <- Tambahin ini */
+}
+
+.gh-topic-content .gh-card.hero .gh-card-image {
+    margin: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    background: var(--color-lighter-gray, #f3f4f6);
+    width: 100%;
+    min-width: 0;
+}
+
+.gh-topic-content .gh-card.hero .gh-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 </style>

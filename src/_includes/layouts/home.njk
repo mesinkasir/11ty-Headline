@@ -2,11 +2,10 @@
 layout: layouts/default.njk
 bodyClass: home-template
 ---
-{#- Home layout (was home.hbs). "Latest" grid of the newest 7 posts,
-    then primary topic sections and a secondary topic list. -#}
 <main class="gh-main gh-outer">
 	<div class="gh-inner">
 		<h1 class="gh-sr-only">{{ metadata.title }} — {{ metadata.description }}</h1>
+		
 		<section class="gh-topic gh-topic-grid">
 			<h2 class="gh-topic-name">
 				{% if collections.posts.length > 7 %}
@@ -20,6 +19,7 @@ bodyClass: home-template
 				{% set isHome = true %}
 				{% for post in collections.posts | head(7) %}
 					{% set isLCP = loop.first %}
+					{% set large = loop.first %}
 					{% include "partials/loop-grid.njk" %}
 				{% endfor %}
 			</div>

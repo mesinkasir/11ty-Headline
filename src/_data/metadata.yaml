@@ -15,7 +15,12 @@ icon: ""
 cover_image: ""
 # Where the red "Subscribe" button in the header points. A newsletter/signup
 # URL, a page like /subscribe/, or an on-page anchor like #subscribe.
-subscribe_url: "#subscribe"
+subscribe:
+  text: Subscribe
+  url: "#https://stevennewcomb.substack.com/"
+podcast: 
+  text: Podcast
+  url: "https://dominationchronicles.com/episodes/"
 # Social accounts rendered in the footer. `type` must match an icon partial
 # in _includes/partials/icons/ (x, facebook, instagram, linkedin, bluesky,
 # mastodon, threads, tiktok, youtube, website, email).
@@ -29,3 +34,21 @@ social_accounts:
   - type: instagram
     name: Instagram
     href: https://instagram.com/
+
+# Feeds footer
+feeds:
+  getting_started:
+    title: Getting Started
+    desc: Subscribe to Steven Newcomb's Substack
+    url: https://stevennewcomb.substack.com/feed
+    label: RSS Feed
+  science:
+    title: Science
+    desc: Watch Domination Chronicles on YouTube
+    url: https://www.youtube.com/@DominationChronicles
+    label: YouTube
+  technology:
+    title: Technology
+    desc: Latest episodes from Domination Chronicles
+    url: https://dominationchronicles.com/feed/feed.xml
+    label: RSS Feed

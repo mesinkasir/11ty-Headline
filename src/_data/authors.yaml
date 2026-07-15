@@ -21,3 +21,14 @@
   bluesky: ""
   x: ""
   mastodon: https://mastodon.social/@jamie
+
+- key: anonymous
+  name: anonymous
+  slug: anonymous
+  bio: anonymous
+  location: anonymous
+  profile_image: /assets/images/1494790108377-be9c29b29330.jpg
+  website: ""
+  bluesky: ""
+  x: ""
+  mastodon: https://mastodon.social/@jamie

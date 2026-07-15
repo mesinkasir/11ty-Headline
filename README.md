@@ -101,3 +101,53 @@ rebuild.
 ## License
 
 [MIT](LICENSE). Headline is © 2013–2026 Ghost Foundation.
+
+
+## Change Log
+
+### 15 Jul 2026
+
+#### Subs and Podcast Button
+
+Add Button Subs and Podcast 
+
+IntegratoinButton Subs and Podcast `metadata.yaml`
+
+```
+subscribe:
+  text: Subscribe
+  url: "#https://stevennewcomb.substack.com/"
+podcast: 
+  text: Podcast
+  url: "https://dominationchronicles.com/episodes/"
+```
+
+#### Fix Structures Loop Grid
+
+image left, title, description, author, date. six most recent posts underneath it.
+
+#### Add new Three Feed menu
+
+Then I want three feeds. if you are looking at the headline.ghost.io page I want getting started to be the https://stevennewcomb.substack.com/feed, science to be https://www.youtube.com/@DominationChronicles, and technology to be https://dominationchronicles.com/feed/feed.xml
+
+metadata.yaml
+
+```
+feeds:
+  getting_started:
+    title: Getting Started
+    desc: Subscribe to Steven Newcomb's Substack
+    url: https://stevennewcomb.substack.com/feed
+    label: RSS Feed
+  science:
+    title: Science
+    desc: Watch Domination Chronicles on YouTube
+    url: https://www.youtube.com/@DominationChronicles
+    label: YouTube
+  technology:
+    title: Technology
+    desc: Latest episodes from Domination Chronicles
+    url: https://dominationchronicles.com/feed/feed.xml
+    label: RSS Feed
+```
+
